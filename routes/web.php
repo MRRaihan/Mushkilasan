@@ -19,8 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontendController@index')->name('home');
 
+//Admin Route
 Route::get('admin', 'Admin\DashboardController@login')->name('admin.login');
-Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function (){
+
+Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=> 'admin'], function (){
     Route::get('dashboard', 'DashboardController@dashboard')->name('admin.dashboard');
 });
 
