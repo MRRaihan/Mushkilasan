@@ -82,18 +82,19 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Category</th>
+                                        <th>Category Name</th>
+                                        <th>Category Image</th>
                                         <th>Date</th>
-
                                         <th class="text-right">Action</th>
-
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($categories as $category)
                                       <tr>
-                                        <td></td>
-                                        <td><img class="avatar-sm rounded mr-1" src="" alt="Category Image"> </td>
-                                        <td></td>
+                                         <td>{{ $serial++ }}</td>
+                                        <td>{{ $category->category_name }}</td>
+                                        <td><img class="avatar-sm rounded mr-1" src="{{ asset($category->category_image) }}" alt="Category Image"> </td>
+                                        <td>{{ $category->created_at->format('d-m-Y') }}</td>
                                         <td class="text-right">
                                             <a href="" class="btn btn-sm bg-success-light mr-2">
                                                 <i class="far fa-edit mr-1"></i> Edit
@@ -101,6 +102,7 @@
                                             <a href="javascript:;" class="on-default remove-row btn btn-sm bg-danger-light mr-2 delete_categories" id="Onremove" data-id=""><i class="far fa-trash-alt mr-1"></i> Delete</a>
                                         </td>
                                         </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

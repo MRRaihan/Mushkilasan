@@ -23,7 +23,7 @@
                         <div class="card-body">
 
                             <!-- Form -->
-                            <form action="{{ route('category.store') }}" method="post">
+                            <form action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group">
@@ -36,14 +36,14 @@
 
                                 <div class="form-group">
                                     <label>Category Image</label>
-                                    <input class="form-control" type="file" name="image" id="image">
+                                    <input class="form-control" type="file" accept="image/*" name="category_image" id="category_image">
                                 </div>
-                                @error('image')
+                                @error('category_image')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
 
                                 <div class="mt-4">
-                                    <button class="btn btn-primary" type="submit">Add Category</button>
+                                    <button class="btn btn-primary">Add Category</button>
                                     <a href="{{ route('category.index') }}" class="btn btn-link">Cancel</a>
                                 </div>
                             </form>
