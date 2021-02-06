@@ -160,9 +160,17 @@
 							<img class="rounded-circle" src="{{ asset('assets/img/user.jpg') }}" width="40" alt="Admin">
 						</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="admin-profile.html">Profile</a>
-                <a class="dropdown-item" href="login.html">Logout</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" ><i class="fas fa-user"></i>&nbsp;Profile</a>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"><i class="fa fa-lock"></i> &nbsp;{{__('Logout')}}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+
             </div>
         </li>
         <!-- /User Menu -->

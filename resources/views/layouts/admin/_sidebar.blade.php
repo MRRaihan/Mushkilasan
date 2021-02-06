@@ -15,7 +15,7 @@
                     <a href="#"><i class="fas fa-user"></i> <span>Admin</span></a>
                 </li>
                 <li>
-                    <a href="categories.html"><i class="fas fa-layer-group"></i> <span>Categories</span></a>
+                    <a href="{{ route('category.index') }}"><i class="fas fa-layer-group"></i> <span>Categories</span></a>
                 </li>
                 <li>
                     <a href="subcategories.html"><i class="fab fa-buffer"></i> <span>Sub Categories</span></a>

@@ -1,6 +1,21 @@
 @extends('layouts.admin.master')
+@section('title', "Dashboard")
+@push('css')
+@endpush
 
 @section('content')
+<div class="page-wrapper">
+ <div class="content container-fluid">
+    <!-- Page Header -->
+    <div class="page-header">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="page-title">Welcome Admin!</h3>
+                </div>
+            </div>
+        </div>
+    <!-- /Page Header -->
+
     <div class="row">
         <div class="col-xl-3 col-sm-6 col-12">
             <div class="card">
@@ -304,4 +319,8 @@
 
         </div>
     </div>
+ </div>
+</div>
 @endsection
+@push('scripts')
+@endpush
