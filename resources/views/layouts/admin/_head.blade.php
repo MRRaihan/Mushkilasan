@@ -3,17 +3,17 @@
 <title>Mushkilasan | Dashboard</title>
 
 <!-- Favicons -->
-<link rel="shortcut icon" href="{{ asset('assets/admin/img/logo-icon.png') }}">
+<link rel="shortcut icon" href="{{ asset('assets/img/logo-icon.png') }}">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="{{ asset('assets/admin/plugins/bootstrap/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
 
 <!-- Fontawesome CSS -->
-<link rel="stylesheet" href="{{ asset('assets/admin/plugins/fontawesome/css/fontawesome.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/admin/plugins/fontawesome/css/all.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/fontawesome.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}">
 
 <!-- Animate CSS -->
-<link rel="stylesheet" href="{{ asset('assets/admin/css/animate.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
 
 <!-- Main CSS -->
-<link rel="stylesheet" href="{{ asset('assets/admin/css/admin.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">

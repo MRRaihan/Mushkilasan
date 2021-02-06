@@ -17,9 +17,17 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'FrontendController@index')->name('home');
 
-
+Route::get('admin', 'Admin\DashboardController@login')->name('admin.login');
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function (){
     Route::get('dashboard', 'DashboardController@dashboard')->name('admin.dashboard');
 });
+
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);
+
+/*Route::get('/home', 'HomeController@index')->name('home');*/

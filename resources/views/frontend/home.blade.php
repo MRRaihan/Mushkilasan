@@ -6,28 +6,28 @@
     <title>Mushkilasan</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/frontend/img/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/frontend/plugins/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
 
     <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/frontend/plugins/fontawesome/css/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/plugins/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}">
 
     <!-- Owl Carousel CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/frontend/plugins/owlcarousel/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/plugins/owlcarousel/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/owlcarousel/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/owlcarousel/owl.theme.default.min.css') }}">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 
 <body>
 
-<!-- Loader -->
+{{--<!-- Loader -->
 <div class="page-loading">
     <div class="preloader-inner">
         <div class="preloader-square-swapping">
@@ -37,7 +37,7 @@
         </div>
     </div>
 </div>
-<!-- /Loader -->
+<!-- /Loader -->--}}
 
 <div class="main-wrapper">
 
@@ -53,10 +53,10 @@
 						</span>
                 </a>
                 <a href="{{ route('home') }}" class="navbar-brand logo">
-                    <img src="{{ asset('assets/frontend/img/logo.png') }}" alt="Logo" style="height: auto; max-width: 100%; max-height: 75px;" class="img-fluid">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="height: auto; max-width: 100%; max-height: 75px;" class="img-fluid">
                 </a>
                 <a href="{{ route('home') }}" class="navbar-brand logo-small">
-                    <img src="{{ asset('assets/frontend/img/logo.png') }}" class="img-fluid" alt="Logo">
+                    <img src="{{ asset('assets/img/logo.png') }}" class="img-fluid" alt="Logo">
                 </a>
             </div>
             <div class="main-menu-wrapper">
@@ -1033,17 +1033,17 @@
 <!-- /Login Modal -->
 
 <!-- jQuery -->
-<script src="{{ asset('assets/frontend/js/jquery-3.5.0.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery-3.5.0.min.js') }}"></script>
 
 <!-- Bootstrap Core JS -->
-<script src="{{ asset('assets/frontend/js/popper.min.js') }}"></script>
-<script src="{{ asset('assets/frontend/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
 <!-- Owl JS -->
-<script src="{{ asset('assets/frontend/plugins/owlcarousel/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/owlcarousel/owl.carousel.min.js') }}"></script>
 
 <!-- Custom JS -->
-<script src="{{ asset('assets/frontend/js/script.js') }}"></script>
+<script src="{{ asset('assets/js/script.js') }}"></script>
 
 </body>
 </html>

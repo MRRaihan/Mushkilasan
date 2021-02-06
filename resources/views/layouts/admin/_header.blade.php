@@ -2,7 +2,7 @@
 <div class="header">
     <div class="header-left">
         <a href="{{ route('admin.dashboard') }}" class="logo logo-small">
-            <img src="{{ asset('assets/admin/img/logo-icon.png') }}" alt="Logo" width="30" height="30">
+            <img src="{{ asset('assets/img/logo-icon.png') }}" alt="Logo" width="30" height="30">
         </a>
     </div>
     <a href="javascript:void(0);" id="toggle_btn">
@@ -157,7 +157,7 @@
         <li class="nav-item dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle user-link  nav-link" data-toggle="dropdown">
 						<span class="user-img">
-							<img class="rounded-circle" src="{{ asset('assets/admin/img/user.jpg') }}" width="40" alt="Admin">
+							<img class="rounded-circle" src="{{ asset('assets/img/user.jpg') }}" width="40" alt="Admin">
 						</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
