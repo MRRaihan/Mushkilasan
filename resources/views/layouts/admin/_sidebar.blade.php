@@ -15,6 +15,9 @@
                     <a href="#"><i class="fas fa-user"></i> <span>Admin</span></a>
                 </li>
                 <li>
+                    <a href="{{ route('role.index') }}"><i class="fas fa-user"></i> <span>Role</span></a>
+                </li>
+                <li>
                     <a href="{{ route('category.index') }}"><i class="fas fa-layer-group"></i> <span>Categories</span></a>
                 </li>
                 <li>

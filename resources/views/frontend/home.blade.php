@@ -67,7 +67,7 @@
                     <a id="menu_close" class="menu-close" href="javascript:void(0);"> <i class="fas fa-times"></i></a>
                 </div>
                 <ul class="main-nav">
-                    <li class="active">
+                    {{--<li class="active">
                         <a href="index.html">Home</a>
                     </li>
                     <li>
@@ -97,9 +97,9 @@
                             <li><a href="user-reviews.html">Reviews</a></li>
                             <li><a href="user-payment.html">Payment</a></li>
                         </ul>
-                    </li>
+                    </li>--}}
                     <li class="has-submenu">
-                        <a href="index.html#">Pages <i class="fas fa-chevron-down"></i></a>
+                        <a href="index.html#">Categories <i class="fas fa-chevron-down"></i></a>
                         <ul class="submenu">
                             <li><a href="search.html">Search</a></li>
                             <li><a href="service-details.html">Service Details</a></li>
@@ -115,13 +115,24 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="admin/index.html" target="_blank">Admin</a>
+                        <a href="#">About Us</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" data-toggle="modal" data-target="#provider-register">Become a Professional</a>
+                        <a href="#">Contack Us</a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#provider-register">Become a Professional</a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" data-toggle="modal" data-target="#user-register">Become a User</a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="user-dashboard.html">Language<i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">Bangla</a></li>
+                            <li><a href="#">English</a></li>
+
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -895,7 +906,8 @@
             </div>
             <div class="modal-body">
                 <div class="login-header">
-                    <h3>Join as a Provider</h3>
+                    <h3>Join as a Professional</h3>
+                    <p class="text-muted">Registration for profession</p>
                 </div>
 
                 <!-- Register Form -->
