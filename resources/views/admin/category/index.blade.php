@@ -96,10 +96,14 @@
                                         <td><img class="avatar-sm rounded mr-1" src="{{ asset($category->category_image) }}" alt="Category Image"> </td>
                                         <td>{{ $category->created_at->format('d-m-Y') }}</td>
                                         <td class="text-right">
-                                            <a href="" class="btn btn-sm bg-success-light mr-2">
+                                            <a href="{{ route('category.edit', encrypt($category->id)) }}" class="btn btn-sm bg-success-light mr-2">
                                                 <i class="far fa-edit mr-1"></i> Edit
                                             </a>
-                                            <a href="javascript:;" class="on-default remove-row btn btn-sm bg-danger-light mr-2 delete_categories" id="Onremove" data-id=""><i class="far fa-trash-alt mr-1"></i> Delete</a>
+                                            <form class="d-inline-block pull-right" method="post" action="{{ route('category.destroy', $category->id)  }}">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="on-default remove-row btn btn-sm bg-danger-light mr-2 delete_categories" onclick="return confirm('Are you confirm to delete?')"><i class="far fa-trash-alt mr-1"></i> Delete</button>
+                                            </form>
                                         </td>
                                         </tr>
                                     @endforeach

@@ -49,7 +49,7 @@ class CategoryController extends Controller
             $path ='images/category';
             $file_name = time() . $file->getClientOriginalName();
             $file->move($path, $file_name);
-            $category->category_image= $path.'/'. $file_name;
+            $category->category_image = $path.'/'. $file_name;
         }
 
         try{
@@ -78,9 +78,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::findOrFail(decrypt($id));
+        return view('admin.category.edit', compact('category'));
+
     }
 
     /**
@@ -92,7 +94,28 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'category_name' => 'required',
+            'category_image' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+        $category->category_name = $request->input('category_name');
+        if ($request->hasFile('category_image')){
+            if (file_exists($category->category_image)){
+                unlink($category->category_image);
+            }
+            $file = $request->file('category_image');
+            $path ='images/category';
+            $file_name = time() . $file->getClientOriginalName();
+            $file->move($path, $file_name);
+            $category->category_image = $path.'/'. $file_name;
+        }
+        try {
+            $category->update();
+            return redirect()->route('category.index');
+        } catch (Exception $exception) {
+            return redirect()->back();
+
+        }
     }
 
     /**
@@ -103,6 +126,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if($category){
+            if(file_exists(($category->category_image))){
+                unlink($category->category_image);
+            }
+            $category->delete();
+        }
+        return redirect()->back();
     }
 }
