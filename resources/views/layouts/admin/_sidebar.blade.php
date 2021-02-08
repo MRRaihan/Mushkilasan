@@ -21,7 +21,7 @@
                     <a href="{{ route('category.index') }}"><i class="fas fa-layer-group"></i> <span>Categories</span></a>
                 </li>
                 <li>
-                    <a href="subcategories.html"><i class="fab fa-buffer"></i> <span>Sub Categories</span></a>
+                    <a href="{{ route('subcategory.index') }}"><i class="fab fa-buffer"></i> <span>Sub Categories</span></a>
                 </li>
                 <li>
                     <a href="service-list.html"><i class="fas fa-bullhorn"></i> <span> Services</span></a>

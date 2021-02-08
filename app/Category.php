@@ -13,4 +13,8 @@ class Category extends Model
         'category_mobile_icon',
         'status',
     ];
+    public function subcategories()
+    {
+        return $this->hasMany(SubCategory::class);
+    }
 }
