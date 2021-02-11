@@ -21,31 +21,63 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <form  method="post" action="{{ route('subcategory.store') }}" enctype="multipart/form-data">
+
+                            <!-- Form -->
+                            <form action="{{ route('subcategory.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <select class="form-control select" name="category_id" id="category_id">
-                                        <option value="">Select Category</option>
+                                    <select  name="category" id="category"  class="form-control select">
+                                        <option value="" style="display: none" selected>Select Category</option>
                                         @foreach($categories as $category)
-                                            <option @if(old('category_id') == $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                                            <option @if(old('category') == $category->id) selected @endif value="{{ $category->id }}"> {{ $category->category_name }} </option>
                                         @endforeach
                                     </select>
+                                    @error('category')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
+
                                 <div class="form-group">
                                     <label>Sub Category Name</label>
-                                    <input class="form-control" type="text"  name="subcategory_name" id="subcategory_name">
+                                    <input class="form-control" type="text" name="subcategory_name" value="{{ old('subcategory_name') }}" placeholder="Sub category name">
+                                    @error('subcategory_name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
+
                                 <div class="form-group">
                                     <label>Sub Category Image</label>
-                                    <input class="form-control" type="file"  name="subcategory_image" id="subcategory_image">
+                                    <input class="form-control" type="file" accept="image/*" name="subcategory_image" id="subcategory_image">
+                                    @error('subcategory_image')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label> Status</label>
+                                    <div class="col-md-10">
+                                        <div class="radio radio-info radio-inline">
+                                            <input type="radio" id="Active" @if(old('status') == 'Active') checked @endif value="Active" name="status">
+                                            <label for="Active"> Active </label>
+                                        </div>
+                                        <div class="radio radio-inline">
+                                            <input type="radio" id="Inactive" @if(old('status') == 'Inactive') checked @endif value="Inactive" name="status">
+                                            <label for="Inactive"> Inactive </label>
+                                        </div>
+                                    </div>
+                                    @error('status')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="mt-4">
-                                    <button class="btn btn-primary" name="form_submit" value="submit" type="submit">Add Subcategory</button>
-                                    <a href="{{ route('subcategory.index') }}" class="btn btn-link">Cancel</a>
+                                    <button class="btn btn-primary">Add Subcategory</button>
+                                    <a href="{{ route('subcategory.index') }}" class="btn btn-outline-dark">Cancel</a>
                                 </div>
                             </form>
+                            <!-- /Form -->
+
                         </div>
                     </div>
                 </div>

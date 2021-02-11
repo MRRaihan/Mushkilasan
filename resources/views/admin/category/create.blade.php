@@ -44,7 +44,7 @@
 
                                 <div class="mt-4">
                                     <button class="btn btn-primary">Add Category</button>
-                                    <a href="{{ route('category.index') }}" class="btn btn-link">Cancel</a>
+                                    <a href="{{ route('category.index') }}" class="btn btn-outline-dark">Cancel</a>
                                 </div>
                             </form>
                             <!-- Form -->

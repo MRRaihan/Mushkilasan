@@ -16,8 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::orderBy('created_at', 'DESC')->paginate(10);
-        $serial = 1;
-        return view('admin.category.index', compact('categories', 'serial'));
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -40,7 +39,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_name' => 'required',
-            'category_image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'category_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         ]);
         $category = new Category();
         $category->category_name= $request->input('category_name');

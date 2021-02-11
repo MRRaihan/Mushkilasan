@@ -16,7 +16,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.subcategory.index');
+        $subcategories = SubCategory::orderBy('created_at', 'DESC')->paginate(10);
+        return view('admin.subcategory.index', compact('subcategories'));
     }
 
     /**
@@ -27,7 +28,6 @@ class SubCategoryController extends Controller
     public function create()
     {
         $categories = Category::orderBy('category_name')->get();
-        dd($categories);
         return view('admin.subcategory.create', compact('categories'));
     }
 
@@ -39,7 +39,29 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'category'=>'required',
+            'subcategory_name'=>'required',
+            'subcategory_image'=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'status'=>'required',
+        ]);
+        $subcategory = new SubCategory();
+        $subcategory->category_id= $request->input('category');
+        $subcategory->subcategory_name= $request->input('subcategory_name');
+        $subcategory->status= $request->input('status');
+        if ($request->hasFile('subcategory_image')){
+            $file = $request->file('subcategory_image');
+            $path ='images/sub-category';
+            $file_name = time() . $file->getClientOriginalName();
+            $file->move($path, $file_name);
+            $subcategory->subcategory_image = $path.'/'. $file_name;
+        }
+        try{
+            $subcategory->save();
+            return redirect()->route('subcategory.index');
+        }catch(Exception $e){
+            return redirect()->back();
+        }
     }
 
     /**
@@ -59,9 +81,11 @@ class SubCategoryController extends Controller
      * @param  \App\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(SubCategory $subCategory)
+    public function edit($id)
     {
-        //
+        $categories = Category::orderBy('category_name')->get();
+        $subcategory = SubCategory::findOrFail(decrypt($id));
+        return view('admin.subcategory.edit', compact('categories', 'subcategory'));
     }
 
     /**
@@ -71,9 +95,36 @@ class SubCategoryController extends Controller
      * @param  \App\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SubCategory $subCategory)
+    public function update(Request $request, SubCategory $subcategory)
     {
-        //
+        $request->validate([
+            'category'=>'required',
+            'subcategory_name'=>'required',
+            'subcategory_image'=> 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'status'=>'required',
+        ]);
+
+        $subcategory->category_id = $request->input('category');
+        $subcategory->subcategory_name = $request->input('subcategory_name');
+        $subcategory->status = $request->input('status');
+
+        if ($request->hasFile('subcategory_image')){
+            if (file_exists($subcategory->subcategory_image)){
+                unlink($subcategory->subcategory_image);
+            }
+            $file = $request->file('subcategory_image');
+            $path ='images/sub-category';
+            $file_name = time() . $file->getClientOriginalName();
+            $file->move($path, $file_name);
+            $subcategory->subcategory_image = $path.'/'. $file_name;
+        }
+
+        try {
+            $subcategory->update();
+            return redirect()->route('subcategory.index');
+        } catch (Exception $exception) {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -82,8 +133,15 @@ class SubCategoryController extends Controller
      * @param  \App\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubCategory $subCategory)
+    public function destroy(SubCategory $subcategory)
     {
-        //
+
+        if($subcategory){
+            if(file_exists(($subcategory->subcategory_image))){
+                unlink($subcategory->subcategory_image);
+            }
+            $subcategory->delete();
+        }
+        return redirect()->back();
     }
 }

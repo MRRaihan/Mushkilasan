@@ -91,7 +91,7 @@
                                     <tbody>
                                     @foreach($categories as $category)
                                       <tr>
-                                         <td>{{ $serial++ }}</td>
+                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $category->category_name }}</td>
                                         <td><img class="avatar-sm rounded mr-1" src="{{ asset($category->category_image) }}" alt="Category Image"> </td>
                                         <td>{{ $category->created_at->format('d-m-Y') }}</td>

@@ -42,7 +42,7 @@
                                 <div class="mt-4">
                                     <button class="btn btn-primary" name="form_submit" value="submit" type="submit">Update Category</button>
 
-                                    <a href="{{ route('category.index') }}"  class="btn btn-link">Cancel</a>
+                                    <a href="{{ route('category.index') }}"  class="btn btn-outline-dark">Cancel</a>
                                 </div>
                             </form>
                         </div>

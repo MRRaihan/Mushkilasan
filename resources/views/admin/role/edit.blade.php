@@ -55,7 +55,7 @@
 
                                 <div class="mt-4">
                                     <button class="btn btn-primary">Update Role</button>
-                                    <a href="{{ route('role.index') }}" class="btn btn-link">Cancel</a>
+                                    <a href="{{ route('role.index') }}" class="btn btn-outline-dark">Cancel</a>
                                 </div>
                             </form>
                             <!-- Form -->

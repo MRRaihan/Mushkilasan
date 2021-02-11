@@ -85,28 +85,32 @@
                                         <th>Sub Category</th>
                                         <th>Category</th>
                                         <th>Date</th>
+                                        <th>Status</th>
                                         <th class="text-right">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-
+                                     @foreach($subcategories as $subcategory)
                                       <tr>
-                                         <td></td>
-                                          <td><img class="avatar-sm rounded mr-1" src=""></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td class="text-right">
-                                            <a href="" class="btn btn-sm bg-success-light mr-2">
-                                                <i class="far fa-edit mr-1"></i> Edit
-                                            </a>
-                                            <form class="d-inline-block pull-right" method="post" action="">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="on-default remove-row btn btn-sm bg-danger-light mr-2 delete_categories" onclick="return confirm('Are you confirm to delete?')"><i class="far fa-trash-alt mr-1"></i> Delete</button>
-                                            </form>
-                                        </td>
+                                         <td>{{ $loop->iteration }}</td>
+                                          <td>
+                                              <img class="rounded service-img mr-1" src="{{ asset($subcategory->subcategory_image) }}" alt=""> {{ $subcategory->subcategory_name }}
+                                          </td>
+                                        <td>{{ $subcategory->category->category_name }}</td>
+                                        <td>{{ $subcategory->created_at->format('d-m-Y') }}</td>
+                                         <td>{{ $subcategory->status }}</td>
+                                          <td class="text-right">
+                                              <a href="{{ route('subcategory.edit', encrypt($subcategory->id)) }}" class="btn btn-sm bg-success-light mr-2">
+                                                  <i class="far fa-edit mr-1"></i> Edit
+                                              </a>
+                                              <form class="d-inline-block pull-right" method="post" action="{{ route('subcategory.destroy', $subcategory->id)  }}">
+                                                  @csrf
+                                                  @method('delete')
+                                                  <button class="on-default remove-row btn btn-sm bg-danger-light mr-2" onclick="return confirm('Are you confirm to delete?')"><i class="far fa-trash-alt mr-1"></i> Delete</button>
+                                              </form>
+                                          </td>
                                         </tr>
-
+                                     @endforeach
                                     </tbody>
                                 </table>
                             </div>

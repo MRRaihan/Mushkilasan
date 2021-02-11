@@ -206,7 +206,7 @@ ul li{
     margin-bottom: 10px;
 }
 .section-search > h3 span {
-    color:#D9C505;
+    color:#EE4235;
 }
 .section-search > p {
     font-size: 22px;
@@ -493,7 +493,7 @@ ul li{
     width: 100%;
     font-size: 20px;
     font-weight: bold;
-    color: #212121;   
+    color: #212121;
     margin-top: 30px;
     margin-bottom: 12px;
 }
@@ -695,7 +695,7 @@ ul li{
 .reviewthumb img {
     float: left;
     width: 100%;
-    
+
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -867,10 +867,10 @@ ul li{
     padding: 5px 15px;
     border: 1px solid #ff6101;
     border-radius: 4px;
-	-webkit-transition: all 300ms linear 0s; 
-	-moz-transition: all 300ms ease-in 0s; 
-	-ms-transition: all 300ms ease-in 0s; 
-	-o-transition: all 300ms ease-in 0s; 
+	-webkit-transition: all 300ms linear 0s;
+	-moz-transition: all 300ms ease-in 0s;
+	-ms-transition: all 300ms ease-in 0s;
+	-o-transition: all 300ms ease-in 0s;
 	transition: all 300ms ease-in 0s;
 }
 .updatebtn:hover {
@@ -1276,7 +1276,7 @@ ul li{
 }
 .noti-dropdown .dropdown-toggle::after {
     display:none;
-} 
+}
 .noti-dropdown .dropdown-toggle span {
 	background-color: #f43f3f;
 	display: block;
@@ -1358,7 +1358,7 @@ ul li{
     border-bottom: 1px solid #eee;
     text-align: center;
 }
-.topnav-dropdown-header, 
+.topnav-dropdown-header,
 .topnav-dropdown-footer {
     font-size: 14px;
     height: 40px;
@@ -1636,17 +1636,17 @@ ul li{
 .nav-tabs.nav-tabs-top > li > a.active:focus {
 	border-top-color: #ff6101;
 }
-.nav-tabs.nav-tabs-bottom > li > a.active, 
-.nav-tabs.nav-tabs-bottom > li > a.active:hover, 
+.nav-tabs.nav-tabs-bottom > li > a.active,
+.nav-tabs.nav-tabs-bottom > li > a.active:hover,
 .nav-tabs.nav-tabs-bottom > li > a.active:focus {
 	border-bottom-width: 2px;
 	border-color: transparent;
 	border-bottom-color: #ff6101;
 	background-color: transparent;
-	transition: none 0s ease 0s; 
-	-moz-transition: none 0s ease 0s; 
-	-o-transition: none 0s ease 0s; 
-	-ms-transition: none 0s ease 0s; 
+	transition: none 0s ease 0s;
+	-moz-transition: none 0s ease 0s;
+	-o-transition: none 0s ease 0s;
+	-ms-transition: none 0s ease 0s;
 	-webkit-transition: none 0s ease 0s;
 }
 .nav-tabs.nav-tabs-solid {
@@ -2382,8 +2382,8 @@ header.sticktop.dark {
 	border-color: #f25800;
 	color: #fff;
 }
-.btn-primary.active:focus:not(:disabled):not(.disabled), 
-.btn-primary:active:focus:not(:disabled):not(.disabled), 
+.btn-primary.active:focus:not(:disabled):not(.disabled),
+.btn-primary:active:focus:not(:disabled):not(.disabled),
 .show > .btn-primary.dropdown-toggle:focus {
 	box-shadow: unset;
 }
@@ -4005,7 +4005,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 	.breadcrumbs {float: left; width: 100%; text-align: center; margin-top: 10px; }
 	.breadcrumbs li {
 		float: none;
-		display: inline-block; 
+		display: inline-block;
 		padding: 0 13px;
 	}
 	.search-box form .search-btn {
@@ -4026,8 +4026,8 @@ div.dataTables_wrapper div.dataTables_filter input {
 		right: 20px;
 	}
 	.search-box form .search-btn {
-		float: left; 
-		width: 100%; 
+		float: left;
+		width: 100%;
 		padding: 0;
 	}
 	.search-input.line::before {
