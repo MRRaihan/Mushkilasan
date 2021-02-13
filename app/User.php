@@ -40,6 +40,7 @@ class User extends Authenticatable
         'account_ifsc',
         'last_login',
         'is_agree',
+        'phone',
     ];
 
     /**
