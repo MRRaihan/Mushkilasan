@@ -51,7 +51,7 @@
 <!-- /Provider Register Modal -->
 
 <!-- User Register Modal -->
- @include('layouts.frontend.modal._user-register')
+ {{-- @include('layouts.frontend.modal._user-register') --}}
 <!-- /User Register Modal -->
 
 <!-- Login Modal -->
