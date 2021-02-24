@@ -36,6 +36,10 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=> 'admin'], 
     Route::resource('subcategory', 'SubCategoryController');
 });
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+  ]);
 
 
