@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -84,4 +85,64 @@ class RegisterController extends Controller
             'status' => 'Active',
         ]);
     }
+
+    public function register(Request $request){
+        // return $request;
+
+        // $validator = Validator::make($request->all(), [
+        //     'profetion' => 'required | max:255',
+        //     'name' => 'required|max:255',
+        //     'phone' => 'required|min:11|numeric',
+        //     'email' => 'required|email|unique:users,email',
+        //     'agreeCheckboxUser' => 'required',
+        //     'password' => [
+        //         'required',
+        //         'string',
+        //         'min:10',             // must be at least 10 characters in length
+        //         'regex:/[a-z]/',      // must contain at least one lowercase letter
+        //         // 'regex:/[A-Z]/',      // must contain at least one uppercase letter
+        //         // 'regex:/[0-9]/',      // must contain at least one digit
+        //         // 'regex:/[@$!%*#?&]/', // must contain a special character
+        //     ],
+        // ]);
+
+        return response()->json(['success'=>'Added new records.', 'url'=> '/']);
+
+        // if ($validator->passes()) {    
+        //     return response()->json(['success'=>'Added new records.', 'url'=> '/']);
+        // }
+        // return response()->json(['error'=>$validator->errors()]);
+
+        // $validation = $request->validate([
+        //     'name' => 'required|max:255',
+        //     'phone' => 'required|min:11|numeric',
+        //     'email' => 'required|email|unique:users,email',
+        //     'password' => [
+        //         'required',
+        //         'string',
+        //         'min:10',             // must be at least 10 characters in length
+        //         'regex:/[a-z]/',      // must contain at least one lowercase letter
+        //         // 'regex:/[A-Z]/',      // must contain at least one uppercase letter
+        //         // 'regex:/[0-9]/',      // must contain at least one digit
+        //         // 'regex:/[@$!%*#?&]/', // must contain a special character
+        //     ],
+            
+        // ]);
+
+        // $user = new User;
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->phone = $request->phone;
+        // $user->password = bcrypt($request->password);
+        // $st = $user->save();
+
+        // return  redirect()->back();
+
+    }
+
+
+    
+    
+
+
 }

@@ -14,12 +14,15 @@
                 </div>
 
                 <!-- Register Form -->
-                <form action="{{ route('register') }}" method="POST">
-                    @csrf
+                {{-- <form id="myForm" action="{{ route('register') }}" method="POST"> --}}
+                {{-- <form id="myForm" action="javascript:void(0)" method="POST"> --}}
+                <form>
+                    {{-- @csrf --}}
+                    {{ csrf_field() }}
 
                     <div class="form-group form-focus">
                         <label>What type of customer</label>
-                        <select name="profetion" id="profetion" class="form-control select">
+                        <select name="profetion" id="profetion1" class="form-control select">
                             {{--<option value="" style="display: none" selected>Select your profetion here...</option>
                             @foreach($provider_profetions as $profetion)
                                 <option @if(old('profetion') == $profetion->id) selected @endif value="{{ $profetion->id }}"> {{ $profetion->name }} </option>
@@ -28,47 +31,47 @@
                             <option>Normal User</option>
                             <option>Corporate User</option>
                         </select>
-                        @error('profetion')
+                        {{-- @error('profetion')
                         <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
                     </div>
 
                     <div class="form-group form-focus">
                         <label for="name" class="focus-label">Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Your name">
-                        @error('name')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                        <input type="text" id="name" class="form-control" name="name" placeholder="Your name">
+                        {{-- @error('name')
+                        <div class="text-danger" id="nameError">{{ $message }}</div>
+                        @enderror --}}
                     </div>
 
                     <div class="form-group form-focus">
                         <label for="name" class="focus-label">Email</label>
-                        <input type="email" class="form-control" name="email" placeholder="Your email">
-                        @error('email')
+                        <input type="email" id="email" class="form-control" name="email" placeholder="Your email">
+                        {{-- @error('email')
                         <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
                     </div>
 
                     <div class="form-group form-focus">
                         <label class="focus-label">Mobile Number</label>
-                        <input type="text" class="form-control" name="phone" placeholder="xxxxxxxx">
-                        @error('phone')
+                        <input type="text" id="phone" class="form-control" name="phone" placeholder="xxxxxxxx">
+                        {{-- @error('phone')
                         <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
                     </div>
                     <div class="form-group form-focus">
                         <label class="focus-label">Create Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="********">
-                        @error('password')
+                        <input type="password" id="password" name="password" class="form-control" placeholder="********">
+                        {{-- @error('password')
                         <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
                     </div>
                     {{--<div class="text-right">
                         <a class="forgot-link" href="index.html#">Already have an account?</a>
                     </div>--}}
                     <div class="form-group">
                         <div class="custom-control custom-control-xs custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" name="agreeCheckboxUser"
+                            <input type="checkbox" id="agreeCheckboxUser" class="custom-control-input" name="agreeCheckboxUser"
                                    id="agree_checkbox_user" value="1">
                             <label class="custom-control-label" for="agree_checkbox_user">I agree
                                 to Mushkilasan</label> <a tabindex="-1" href="javascript:void(0);">Privacy
@@ -76,7 +79,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button class="btn login-btn">Register</button>
+                        <button type="submit" class="btn login-btn btn-submit">Register</button>
                     </div>
                     {{--<div class="login-or">
                         <span class="or-line"></span>
@@ -100,4 +103,60 @@
         </div>
     </div>
 </div>
+
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+        $(".btn-submit").click(function(e){
+            e.preventDefault();
+
+            var _token = $("input[name='_token']").val();
+            var profetion = $("input[name='profetion']").val();
+            var name = $("input[name='name']").val();
+            var email = $("input[name='email']").val();
+            var password = $("input[name='password']").val();
+            var agreeCheckboxUser = $("input[name='agreeCheckboxUser']").val();
+
+            $.ajax({
+                url: "/register",
+                type:'POST',
+                data: {
+                    _token:_token, 
+                    profetion:profetion,
+                    name:name,
+                    email:email, 
+                    password:password, 
+                    agreeCheckboxUser:agreeCheckboxUser
+                    },
+                success: function(data) {
+                    if($.isEmptyObject(data.error)){
+                        alert(data.success);
+                        // window.location.replace(data.url);
+                    }else{
+                        alert('data.error');
+                        // printErrorMsg(data.error);
+                    }
+                }
+            });
+        });
+        function printErrorMsg (msg) {
+            // $(".print-error-msg").find("ul").html('');
+            $(".error_msg").css('display','block');
+            $("#first_name_err").append(msg['first_name']);
+            $("#last_name_err").append(msg['last_name']);
+            $("#email_err").append(msg['email']);
+            $("#address_err").append(msg['address']);
+            // $.each( msg, function( key, value ) {
+            //     $(".print-error-msg").find("ul").append(key+'<li>'+value+'</li>');
+            //     if(key=='first_name'){
+            //     }
+            // });
+        }
+    });
+
+
+</script>
 <!-- /User Register Modal -->
