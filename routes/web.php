@@ -21,7 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('user/login', 'Frontend\LoginController@login')->name('user.login');
 
-
+// Route::group(['prefix'=>'user', 'namespace'=>'user', 'middleware'=> 'user'], function (){
+Route::group(['prefix'=>'user', 'middleware'=> 'user'], function (){
+    Route::get('dashboard', 'Frontend\LoginController@dashboard')->name('user.dashboard');
+});
 
 
 
