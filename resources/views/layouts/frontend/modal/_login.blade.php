@@ -10,7 +10,7 @@
                 <div class="login-header">
                     <h3>Login <span>Truelysell</span></h3>
                 </div>
-                <form action="{{route('login')}}" method="POST">
+                <form action="{{route('user.login')}}" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group form-focus">
                         <label class="focus-label">Email</label>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="text-right">
                     </div>
-                    <button class="btn btn-primary btn-block btn-lg login-btn submitbtn" type="submit">Login</button>
+                    <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">Login</button>
                     <div class="login-or">	<span class="or-line"></span>
                         <span class="span-or">or</span>
                     </div>
@@ -59,7 +59,7 @@
             var password = $("input[name='password']").val();
 
             $.ajax({
-                url: "/login",
+                url: "/user/login",
                 type:'POST',
                 data: {
                     _token:_token,

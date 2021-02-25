@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 // Frontend Route
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::post('user/login', 'Frontend\LoginController@login')->name('user.login');
 
 
 

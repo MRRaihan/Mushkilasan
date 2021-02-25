@@ -1,20 +1,12 @@
-@if(Auth::user()->user_type == 'agent')
-
-<h1>User Dashboard</h1>
-
-@else
-
-
-
 <header class="header">
     <nav class="navbar navbar-expand-lg header-nav">
         <div class="navbar-header">
             <a id="mobile_btn" href="javascript:void(0);">
-						<span class="bar-icon">
-							<span></span>
-							<span></span>
-							<span></span>
-						</span>
+                <span class="bar-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
             </a>
             <a href="{{ route('home') }}" class="navbar-brand logo">
                 <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="height: auto; max-width: 100%; max-height: 75px;" class="img-fluid">
@@ -104,4 +96,3 @@
     </nav>
 </header>
 
-@endif
