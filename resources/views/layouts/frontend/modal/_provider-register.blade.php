@@ -127,9 +127,6 @@
             var phone = $("input[name='phone']").val();
             var password = $("input[name='password']").val();
             var agreeCheckboxUser = $("input[name='agreeCheckboxUser']").val();
-            console.log(password);
-            console.log(agreeCheckboxUser);
-            console.log(profetion1);
             $.ajax({
                 url: "/register",
                 type:'POST',

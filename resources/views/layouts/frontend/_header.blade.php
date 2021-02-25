@@ -1,3 +1,11 @@
+@if(Auth::user()->user_type == 'agent')
+
+<h1>User Dashboard</h1>
+
+@else
+
+
+
 <header class="header">
     <nav class="navbar navbar-expand-lg header-nav">
         <div class="navbar-header">
@@ -95,3 +103,5 @@
         </ul>
     </nav>
 </header>
+
+@endif
