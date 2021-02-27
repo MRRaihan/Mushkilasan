@@ -23,7 +23,9 @@
                         <select name="profetion1" id="profetion1" class="form-control select">
                             <option value="" style="display: none" selected>{{ __('Select your profession here...') }}</option>
                             @foreach($provider_profetions as $profetion)
-                                <option @if(old('profetion') == $profetion->id) selected @endif value="{{ $profetion->id }}"> {{ $profetion->name }} </option>
+                            @if($profetion->name != 'user' && $profetion->name != 'corporate')
+                            <option @if(old('profetion') == $profetion->id) selected @endif value="{{ $profetion->id }}"> {{ $profetion->name }} </option>
+                            @endif
                             @endforeach
                         </select>
                         <div id="profetion1_err" class="text-danger error_msg" style="display:none"></div>
@@ -128,7 +130,7 @@
             var password = $("input[name='password']").val();
             var agreeCheckboxUser = $("input[name='agreeCheckboxUser']").val();
             $.ajax({
-                url: "/register",
+                url: "{{route('register')}}",
                 type:'POST',
                 data: {
                     _token:_token,

@@ -20,7 +20,16 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check() && Auth::user()->user_type == 'admin') {
             return redirect()->route('admin.dashboard');
+        } elseif (Auth::guard($guard)->check() && Auth::user()->user_type == 'user') {
+            return redirect()->route('user.dashboard');
+        } elseif (Auth::guard($guard)->check() && Auth::user()->user_type == 'agent') {
+            return redirect()->route('agent.dashboard');
+        } elseif (Auth::guard($guard)->check() && Auth::user()->user_type == 'serviceprovider') {
+            return redirect()->route('serviceprovider.dashboard');
+        } elseif (Auth::guard($guard)->check() && Auth::user()->user_type == 'corporate') {
+            return redirect()->route('corporate.dashboard');
+        } else{
+            return $next($request);
         }
-        return $next($request);
     }
 }

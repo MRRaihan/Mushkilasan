@@ -16,14 +16,21 @@ class IsUser
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        // if (Auth::check() && (Auth::user()->user_type == 'normal-user')) {
-        if (Auth::guard($guard)->check() && Auth::user()->user_type == 'normal-user') {
-            // return $next($request);
-            return redirect()->route('user.dashboard');
-        }
-        else{
+
+        if(Auth::check() && Auth::user()->user_type == 'user'){
+            return $next($request);
+        } else {
             return redirect()->route('home');
         }
+
+
+        // if (Auth::guard($guard)->check() && Auth::user()->user_type == 'normal-user') {
+        //     // return $next($request);
+        //     return redirect()->route('user.dashboard');
+        // }
+        // else{
+        //     return redirect()->route('home');
+        // }
     }
 
     // public function handle($request, Closure $next, $guard = null)

@@ -10,27 +10,10 @@ use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-
-    public function dashboard(){
-        $categories = Category::where('status', 'Active')->orderBy('category_name')->get();
-        $provider_profetions = Role::where('status', 'Active')->orderBy('name')->get();
-        return view('user.dashboard', compact('categories','provider_profetions'));
-
-    }
-    public function logins(Request $request){
-        if($request->password == 123) {
-            return 'ok';
-        } else{
-            return 'not ok';
-        }
-//        dd($request);
-//        return response()->json('success' => 'success');
-    }
-
-
 
 
     public function login(Request $request)
@@ -40,19 +23,13 @@ class LoginController extends Controller
             'password' => ['required', 'string', 'min:6'],
         ]);
 
-
         if ($validator->passes()) {
-
-            // return response()->json(['success'=> 'success ok']);
             $user = User::where('email', $request->email)->first();
             if($user){
 
-
-                // !Hash::check($request->password, $user->password)
-
-                if(Hash::check($request->password, $user->password)){
-                // if($user->password == bcrypt($request->password)){
-                    return response()->json(['success'=>'Log in success', 'url'=> '/user/dashboard']);
+                if(Auth::guard()->attempt(['email' => $request->email, 'password' => $request->password])){
+                $dashboard = '/'.$user->user_type.'/dashboard';
+                    return response()->json(['success'=>'Log in success', 'url'=> $dashboard]);
                 }else{
                     return response()->json(['err_password'=>'Incorrect Password']);
                 }

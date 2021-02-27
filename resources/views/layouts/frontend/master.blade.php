@@ -6,6 +6,9 @@
 
 <body>
 
+
+
+
 {{--<!-- Loader -->
 <div class="page-loading">
     <div class="preloader-inner">
@@ -51,7 +54,7 @@
 <!-- /Provider Register Modal -->
 
 <!-- User Register Modal -->
- {{-- @include('layouts.frontend.modal._user-register') --}}
+ @include('layouts.frontend.modal._user-register')
 <!-- /User Register Modal -->
 
 <!-- Login Modal -->
