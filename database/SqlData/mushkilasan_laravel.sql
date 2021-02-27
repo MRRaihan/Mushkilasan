@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 06:58 PM
+-- Generation Time: Feb 27, 2021 at 01:42 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mushkilasan`
+-- Database: `mushkilasan_laravel`
 --
 
 -- --------------------------------------------------------
@@ -119,9 +119,11 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Self service provider', 'Active', '2021-02-07 00:42:13', '2021-02-07 01:01:07'),
+(1, 'service provider', 'Active', '2021-02-07 00:42:13', '2021-02-07 01:01:07'),
 (2, 'Agent', 'Active', '2021-02-07 01:03:31', '2021-02-07 01:03:31'),
-(3, 'Corporate', 'Active', '2021-02-07 01:03:55', '2021-02-07 01:03:55');
+(3, 'Corporate', 'Active', '2021-02-07 01:03:55', '2021-02-07 01:03:55'),
+(5, 'User', 'Active', '2021-02-07 01:03:55', '2021-02-07 01:03:55'),
+(6, 'Corporate', 'Active', '2021-02-07 01:03:55', '2021-02-07 01:03:55');
 
 -- --------------------------------------------------------
 
@@ -192,13 +194,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `email_verified_at`, `password`, `user_type`, `mobileno`, `country_code`, `currency_code`, `otp`, `share_code`, `profile_img`, `dob`, `token`, `status`, `account_holder_name`, `account_number`, `account_iban`, `bank_name`, `bank_address`, `sort_code`, `routing_number`, `account_ifsc`, `last_login`, `is_agree`, `remember_token`, `created_at`, `updated_at`, `phone`) VALUES
 (1, NULL, 'Mr. Admin', 'admin@gmail.com', NULL, '$2y$10$qfuEhoXOinsh/cbdrUwVYO/lT8IYQO8hyu4Uvx4hl5YKyAsDY4dg.', 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Active', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, ''),
-(9, 2, 'sadfasdf', 'rosaya3233@1adir.com', NULL, '$2y$10$O43wUatMj58OzQyOvmYWx.aGZ6D2.p2D1veKHiHZ.SPA4N84Q14pK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-02-24 05:53:31', '2021-02-24 05:53:31', '01856230550'),
-(10, 3, 'dsfsadfsadf', 'moarefbillahdsfsdaf@gmail.co', NULL, '$2y$10$9yE.obESsNcJfKWUky.FEe94/6wodUcbwnzYlW6BBNuwwG4o/Vff.', 'corporate', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-02-24 06:02:47', '2021-02-24 06:02:47', '01856230550'),
-(11, 2, 'minar@gmail.com', 'sadfd@fgf.com', NULL, '$2y$10$OmeZvTOWcggy2RHBchLoXeTIMabb7BzKhMrSmVEwRrg54vfRqtrTq', 'agent', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-02-24 06:04:42', '2021-02-24 06:04:42', '01856230550'),
-(12, 3, 'minar@gmail.com', 'minarksdfsadfasd@gmail.com', NULL, '$2y$10$y0TDoyxuZ6khb7qTzaeqSeXqM5Zcoh9CGS1XBhBPJSkUq7LgmL02G', 'Corporate', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-02-24 06:19:59', '2021-02-24 06:19:59', '01856230550'),
-(13, 1, 'minar@gmail.com', 'moarefbsdfasdfillah@gmail.com', NULL, '$2y$10$dD4HtM9kLQaqlix0ivfoj.Qcnimyp/o0V01wniUDTT6QkKAW49ZuW', 'self-service-provider', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-02-24 06:24:39', '2021-02-24 06:24:39', '01856230550'),
-(14, 3, 'Minar', 'minar@gmail.com', NULL, '$2y$10$KgxxKBT40d.9Z7Ey9dEKc.eL9N1pkh5VGr/LPxP2i2StKLvWeyG9C', 'corporate', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-02-25 03:23:53', '2021-02-25 03:23:53', '01856230550'),
-(15, 2, 'Minar', 'minar550@gmail.com', NULL, '$2y$10$xesuI1XjMvFHlfaRUF8BZu/BaWHr/w0EQUM/BW2FSPeIq/ZoWbXTu', 'normal-user', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-02-25 04:05:26', '2021-02-25 04:05:26', '01856230550');
+(19, 2, 'Agent', 'Agent@gmail.com', NULL, '$2y$10$vOJq1z.IVVUcPdVbMm7d8uHrWLkEdBYxzSpkkW8ySiQ2DpuP4VRQK', 'agent', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-02-27 05:13:50', '2021-02-27 05:13:50', '01856230550'),
+(20, 3, 'Corporate', 'corporate@gmail.com', NULL, '$2y$10$uSVBC9Dvi0onnKaoeZzQ6.Gg2j2PGDlShl4jpkhpL7eR/foPVJtOK', 'corporate', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-02-27 05:14:11', '2021-02-27 05:14:11', '01856230550'),
+(21, 1, 'Service Provider', 'serviceprovider@gmail.com', NULL, '$2y$10$HFzVNBIoC0axb1SOVika1uR9/kca7YRp0wxRyTYGFcgad6xYQFCau', 'serviceprovider', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-02-27 05:14:44', '2021-02-27 05:14:44', '01856230550'),
+(22, 5, 'user', 'user@gmail.com', NULL, '$2y$10$JXvibL4hnKXNlZ/5OGRaBu/2BqoeHNGgqOMvb2rwYN6HpOpvd1hzW', 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-02-27 05:15:21', '2021-02-27 05:15:21', '01856230550'),
+(23, 6, 'minar550@gmail.com', 'minar@gmail.com', NULL, '$2y$10$2FwvZtH6YtQRtkx1cyTTu.R/ulkMGUhqBh67VA0TaPBmN5u4d.2xm', 'corporate-user', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-02-27 05:24:42', '2021-02-27 05:24:42', '01856230550');
 
 --
 -- Indexes for dumped tables
@@ -275,7 +275,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `sub_categories`
@@ -287,7 +287,7 @@ ALTER TABLE `sub_categories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
