@@ -161,8 +161,8 @@ if ($this->session->userdata('user_select_language') == '') {
                                     <?php foreach ($get_currency as $row) { ?>
                                       <option
                                         value="<?= $row['currency_code']; ?>" <?= ($row['currency_code'] == $user_currency_code) ? 'selected' : ''; ?>><?= $row['currency_code']; ?></option>
-                                    <?php } ?> 
-                                </select> 
+                                    <?php } ?>
+                                </select>
                                 </span>
             </li>
 
@@ -194,10 +194,10 @@ if ($this->session->userdata('user_select_language') == '') {
             } elseif ($get_subscriptions['id'] == '') {
               ?>
               <li class="mobile-list">
-                                    <span class="post-service-blk">
-                                    <a href="javascript:;" class="get_pro_subscription"><i
-                                        class="fas fa-plus-circle mr-1"></i><?php echo (!empty($user_language[$user_selected]['lg_post_service'])) ? $user_language[$user_selected]['lg_post_service'] : $default_language['en']['lg_post_service']; ?></a>
-                                    </span>
+                <span class="post-service-blk">
+                <a href="javascript:;" class="get_pro_subscription"><i
+                    class="fas fa-plus-circle mr-1"></i><?php echo (!empty($user_language[$user_selected]['lg_post_service'])) ? $user_language[$user_selected]['lg_post_service'] : $default_language['en']['lg_post_service']; ?></a>
+                </span>
               </li>
               <?php
             } elseif ($get_availability == '' || $get_availability['availability'] == '' || $check_avail < 5) {

@@ -8,16 +8,17 @@
                         <div class="d-sm-flex flex-row flex-wrap text-center text-sm-left align-items-center">
                             <img alt="profile image" src="{{url('/assets')}}/img/customer/user-01.jpg" class="avatar-lg rounded-circle">
                             <div class="ml-sm-3 ml-md-0 ml-lg-3 mt-2 mt-sm-0 mt-md-2 mt-lg-0">
-                                <h6 class="mb-0">Jeffrey Akridge</h6>
-                                <p class="text-muted mb-0">Member Since Apr 2020</p>
+                                <h6 class="mb-0">{{\Illuminate\Support\Facades\Auth::user()->name }}</h6>
+                                <p class="text-muted mb-0">Member Since {{\Illuminate\Support\Facades\Auth::user()->created_at->format('M Y') }}</p>
+
                             </div>
                         </div>
                     </div>
                     <div class="widget settings-menu">
                         <ul role="tablist" class="nav nav-tabs">
                             <li class="nav-item current">
-                                <a href="{{route('user.dashboard')}}" class="nav-link active">
-                                    <i class="fas fa-chart-line"></i> <span>Service Provider Dashboard</span>
+                                <a href="{{route('agent.dashboard')}}" class="nav-link active">
+                                    <i class="fas fa-chart-line"></i> <span>Agent Dashboard</span>
                                 </a>
                             </li>
                             <li class="nav-item current">
