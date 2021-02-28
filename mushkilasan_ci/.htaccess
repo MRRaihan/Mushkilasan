@@ -1,0 +1,26 @@
+
+
+
+RewriteEngine On
+
+
+
+RewriteBase /mushkilasan1/
+
+
+
+RewriteRule ^index\.php$ - [L]
+
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+
+RewriteRule . /mushkilasan1/index.php [L]
+
+
