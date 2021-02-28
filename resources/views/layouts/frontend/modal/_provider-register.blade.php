@@ -14,51 +14,63 @@
                 </div>
 
                 <!-- Register Form -->
-                <form action="{{ route('register') }}" method="POST">
-                    @csrf
+                {{-- <form action="{{ route('register') }}" method="POST"> --}}
+                <form>
+                    {{ csrf_field() }}
 
                     <div class="form-group form-focus">
                         <label>What is your profetion?</label>
-                        <select name="profetion" id="profetion" class="form-control select">
+                        <select name="profetion1" id="profetion1" class="form-control select">
                             <option value="" style="display: none" selected>{{ __('Select your profession here...') }}</option>
                             @foreach($provider_profetions as $profetion)
-                                <option @if(old('profetion') == $profetion->id) selected @endif value="{{ $profetion->id }}"> {{ $profetion->name }} </option>
+                            @if($profetion->name != 'user' && $profetion->name != 'corporate')
+                            <option @if(old('profetion') == $profetion->id) selected @endif value="{{ $profetion->id }}"> {{ $profetion->name }} </option>
+                            @endif
                             @endforeach
                         </select>
-                        @error('profetion')
+                        <div id="profetion1_err" class="text-danger error_msg" style="display:none"></div>
+                        {{-- @error('profetion')
                         <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
                     </div>
 
                     <div class="form-group form-focus">
                         <label for="name" class="focus-label">{{ __('Name') }}</label>
-                        <input type="text" class="form-control" name="name" placeholder="Your name">
-                        @error('name')
+                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Your name">
+                        <div id="name_err" class="text-danger error_msg" style="display:none"></div>
+
+                        {{-- @error('name')
                         <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
                     </div>
 
                     <div class="form-group form-focus">
                         <label for="name" class="focus-label">{{ __('Email') }}</label>
                         <input type="email" class="form-control" name="email" placeholder="Your email">
-                        @error('email')
+                        <div id="email_err" class="text-danger error_msg" style="display:none"></div>
+
+                        {{-- @error('email')
                         <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
                     </div>
 
                     <div class="form-group form-focus">
                         <label class="focus-label">{{ __('Mobile Number') }}</label>
                         <input type="text" class="form-control" name="phone" placeholder="xxxxxxxx">
-                        @error('phone')
+                        <div id="phone_err" class="text-danger error_msg" style="display:none"></div>
+
+                        {{-- @error('phone')
                         <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
                     </div>
                     <div class="form-group form-focus">
                         <label class="focus-label">{{ __('Create Password') }}</label>
                         <input type="password" name="password" class="form-control" placeholder="********">
-                        @error('password')
+                        <div id="password_err" class="text-danger error_msg" style="display:none"></div>
+
+                        {{-- @error('password')
                         <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
                     </div>
                     {{--<div class="text-right">
                         <a class="forgot-link" href="index.html#">Already have an account?</a>
@@ -66,14 +78,16 @@
                     <div class="form-group">
                         <div class="custom-control custom-control-xs custom-checkbox">
                             <input type="checkbox" class="custom-control-input" name="agreeCheckboxUser"
-                                   id="agree_checkbox_user" value="1">
-                            <label class="custom-control-label" for="agree_checkbox_user">I agree
+                                   id="agree_checkbox_user1" value="1">
+                            <label class="custom-control-label" for="agree_checkbox_user1">I agree
                                 to Mushkilasan</label> <a tabindex="-1" href="javascript:void(0);">Privacy
                                 Policy</a> &amp; <a tabindex="-1" href="javascript:void(0);"> Terms.</a>
                         </div>
+
                     </div>
+                    <div id="agreeCheckboxUser_err" class="text-danger error_msg" style="display:none"></div>
                     <div class="form-group">
-                     <button class="btn login-btn">{{ __('Register') }}</button>
+                     <button class="btn login-btn btn-submit">{{ __('Register') }}</button>
                     </div>
                     {{--<div class="login-or">
                         <span class="or-line"></span>
@@ -98,3 +112,62 @@
     </div>
 </div>
 <!-- /Provider Register Modal -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $(".btn-submit").click(function(e){
+            e.preventDefault();
+
+            var _token = $("input[name='_token']").val();
+            var profetion1 = $("select[name='profetion1']").val();
+            var name = $("input[name='name']").val();
+            var email = $("input[name='email']").val();
+            var phone = $("input[name='phone']").val();
+            var password = $("input[name='password']").val();
+            var agreeCheckboxUser = $("input[name='agreeCheckboxUser']").val();
+            $.ajax({
+                url: "{{route('register')}}",
+                type:'POST',
+                data: {
+                    _token:_token,
+                    profetion1:profetion1,
+                    name:name,
+                    email:email,
+                    phone:phone,
+                    password:password,
+                    agreeCheckboxUser:agreeCheckboxUser
+                },
+                success: function(data) {
+                    if($.isEmptyObject(data.error)){
+                        alert(data.success);
+                        window.location.replace(data.url);
+                    }else{
+                        console.log(data.error);
+                        printErrorMsg(data.error);
+                    }
+                }
+            });
+        });
+        function printErrorMsg (msg) {
+            // $(".print-error-msg").find("ul").html('');
+
+            $(".error_msg").css('display','block');
+            $("#profetion1_err").append(msg['profetion1']);
+            $("#name_err").append(msg['name']);
+            $("#email_err").append(msg['email']);
+            $("#phone_err").append(msg['phone']);
+            $("#password_err").append(msg['password']);
+            $("#agreeCheckboxUser_err").append(msg['agreeCheckboxUser']);
+            // $.each( msg, function( key, value ) {
+            //     $(".print-error-msg").find("ul").append(key+'<li>'+value+'</li>');
+            //     if(key=='first_name'){
+            //     }
+            // });
+
+        }
+    });
+</script>

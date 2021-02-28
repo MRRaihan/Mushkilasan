@@ -156,9 +156,9 @@
         <!-- User Menu -->
         <li class="nav-item dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle user-link  nav-link" data-toggle="dropdown">
-						<span class="user-img">
-							<img class="rounded-circle" src="{{ asset('assets/img/user.jpg') }}" width="40" alt="Admin">
-						</span>
+            <span class="user-img">
+                <img class="rounded-circle" src="{{ asset('assets/img/user.jpg') }}" width="40" alt="Admin">
+            </span>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" ><i class="fas fa-user"></i>&nbsp;Profile</a>

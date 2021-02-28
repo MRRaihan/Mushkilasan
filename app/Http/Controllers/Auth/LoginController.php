@@ -27,19 +27,37 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo;
+    // protected $redirectTo;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     public function redirectTo()
     {
-        if(Auth::check() && Auth::user()->user_type == 'admin')
-        {
-            $this->redirectTo = route('admin.dashboard');
-            return $this->redirectTo;
-        }else{
+        // if(Auth::check() && Auth::user()->user_type == 'admin')
+        // {
+        //     $this->redirectTo = route('admin.dashboard');
+        //     return $this->redirectTo;
+        // } elseif(Auth::check() && Auth::user()->user_type == 'normal-user')
+        // {
+        //     $this->redirectTo = route('user.dashboard');
+        //     return $this->redirectTo;
+        // }else{
 
-            $this->redirectTo = route('admin.login');
-            return $this->redirectTo;
+        //     $this->redirectTo = route('admin.login');
+        //     return $this->redirectTo;
+        // }
+
+        if(auth()->user()->user_type == 'admin'){
+            return route('admin.dashboard');
+        } elseif(auth()->user()->user_type == 'user'){
+            return route('user.dashboard');
+        } elseif(auth()->user()->user_type == 'agent'){
+            return route('agent.dashboard');
+        } elseif(auth()->user()->user_type == 'corporate'){
+            return route('corporate.dashboard');
+        } elseif(auth()->user()->user_type == 'serviceprovider'){
+            return route('serviceprovider.dashboard');
         }
+
     }
 
     /**

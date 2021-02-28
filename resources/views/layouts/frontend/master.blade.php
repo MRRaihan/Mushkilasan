@@ -6,6 +6,9 @@
 
 <body>
 
+
+
+
 {{--<!-- Loader -->
 <div class="page-loading">
     <div class="preloader-inner">

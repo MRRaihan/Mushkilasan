@@ -1,3 +1,4 @@
+
 <!-- jQuery -->
 <script src="{{ asset('assets/js/jquery-3.5.0.min.js') }}"></script>
 
@@ -10,3 +11,11 @@
 
 <!-- Custom JS -->
 <script src="{{ asset('assets/js/script.js') }}"></script>
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+</script>
