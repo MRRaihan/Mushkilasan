@@ -7,10 +7,9 @@ use App\Providers\RouteServiceProvider;
 use App\Role;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -56,17 +55,17 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'profetion' => ['required', 'max:255'],
-    //         'name' => ['required', 'string', 'max:255'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'phone' => ['required', 'min:8'],
-    //         'password' => ['required', 'string', 'min:6'],
-    //     ]);
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'profetion' => ['required', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'min:8'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
 
-    // }
+    }
 
     /**
      * Create a new user instance after a valid registration.
@@ -74,66 +73,76 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    // protected function create(array $data)
-    // {
-
-    //     return User::create([
-    //         'role_id'=> $data['profetion'],
-    //         'name' => $data['name'],
-    //         'email' => $data['email'],
-    //         'phone' => $data['phone'],
-    //         'password' => Hash::make($data['password']),
-    //         'status' => 'Active',
-    //     ]);
-    // }
-
-
-
-
-
-    //custom work for FormSubmission
-    public function register(Request $request)
+    protected function create(array $data)
     {
-        $validator = Validator::make($request->all(), [
-            'profetion1' => ['required', 'max:255'],
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'min:8'],
-            'password' => ['required', 'string', 'min:6'],
-            'agreeCheckboxUser' => ['required'],
+
+        return User::create([
+            'role_id'=> $data['profetion'],
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'password' => Hash::make($data['password']),
+            'status' => 'Active',
         ]);
-
-        if ($validator->passes()) {
-            $user = new User;
-            $profetion1 = $user->role_id = $request->profetion1;
-
-            $roles = Role::where('status' , 'Active')->get();
-
-            foreach($roles as $role){
-                if($profetion1 == $role->id){
-                    $user->user_type = Str::slug($role->name, '-');
-                    // $user->user_type = str_slug($name, '-');
-                }
-            }
-
-            // if($profetion1 == 1){
-            //     $user->user_type = 'provider';
-            // }elseif($profetion1 == 2){
-            //     $user->user_type = 'agent';
-            // }else{
-            //     $user->user_type = 'corporate';
-            // }
-
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->phone = $request->phone;
-            $user->phone = $request->phone;
-            $user->password = bcrypt($request->password);
-            $user->is_agree = $request->agreeCheckboxUser;
-            if($user->save()){
-                return response()->json(['success'=>'Your form has been successfully submitted.', 'url'=> '/']);
-            }
-        }
-    	return response()->json(['error'=>$validator->errors()]);
     }
+
+    public function register(Request $request){
+        // return $request;
+
+        // $validator = Validator::make($request->all(), [
+        //     'profetion' => 'required | max:255',
+        //     'name' => 'required|max:255',
+        //     'phone' => 'required|min:11|numeric',
+        //     'email' => 'required|email|unique:users,email',
+        //     'agreeCheckboxUser' => 'required',
+        //     'password' => [
+        //         'required',
+        //         'string',
+        //         'min:10',             // must be at least 10 characters in length
+        //         'regex:/[a-z]/',      // must contain at least one lowercase letter
+        //         // 'regex:/[A-Z]/',      // must contain at least one uppercase letter
+        //         // 'regex:/[0-9]/',      // must contain at least one digit
+        //         // 'regex:/[@$!%*#?&]/', // must contain a special character
+        //     ],
+        // ]);
+
+        return response()->json(['success'=>'Added new records.', 'url'=> '/']);
+
+        // if ($validator->passes()) {    
+        //     return response()->json(['success'=>'Added new records.', 'url'=> '/']);
+        // }
+        // return response()->json(['error'=>$validator->errors()]);
+
+        // $validation = $request->validate([
+        //     'name' => 'required|max:255',
+        //     'phone' => 'required|min:11|numeric',
+        //     'email' => 'required|email|unique:users,email',
+        //     'password' => [
+        //         'required',
+        //         'string',
+        //         'min:10',             // must be at least 10 characters in length
+        //         'regex:/[a-z]/',      // must contain at least one lowercase letter
+        //         // 'regex:/[A-Z]/',      // must contain at least one uppercase letter
+        //         // 'regex:/[0-9]/',      // must contain at least one digit
+        //         // 'regex:/[@$!%*#?&]/', // must contain a special character
+        //     ],
+            
+        // ]);
+
+        // $user = new User;
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->phone = $request->phone;
+        // $user->password = bcrypt($request->password);
+        // $st = $user->save();
+
+        // return  redirect()->back();
+
+    }
+
+
+    
+    
+
+
 }

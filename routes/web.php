@@ -29,6 +29,7 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=> 'admin'], 
     Route::resource('subcategory', 'SubCategoryController');
 });
 
+<<<<<<< HEAD
 //Agent Route with Middleware
 Route::group( ['prefix' => 'agent', 'middleware' =>['agent', 'auth'], 'namespace'=> 'user'], function(){
     Route::get('dashboard', 'AgentController@index')->name('agent.dashboard');
@@ -48,5 +49,12 @@ Route::group( ['prefix' => 'corporate', 'middleware' =>['corporate', 'auth'], 'n
 Route::group( ['prefix' => 'serviceprovider', 'middleware' =>['serviceprovider', 'auth'], 'namespace'=> 'user'], function(){
     Route::get('dashboard', 'ServiceProviderController@index')->name('serviceprovider.dashboard');
 });
+=======
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+  ]);
+>>>>>>> 903d895d2f184a509b5dcb8d81a792168d455f7e
 
 
